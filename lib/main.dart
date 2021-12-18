@@ -1,9 +1,248 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: CreditCard(),
+    home: MovieApp(),
   ));
+}
+
+class MovieApp extends StatefulWidget {
+  const MovieApp({Key? key}) : super(key: key);
+
+  @override
+  _MovieAppState createState() => _MovieAppState();
+}
+
+class _MovieAppState extends State<MovieApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Color(0xFF1c262f),
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Color(0xFF1B2C3B),
+          title: Text(
+            'Movie App',
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.more_vert,
+                  color: Colors.white,
+                )),
+          ],
+        ),
+        body: Padding(
+          padding: EdgeInsets.only(top: 12.0),
+          child: ListView(
+            children: [
+              Container(
+                height: 40.0,
+                width: double.infinity,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Chip(
+                        label: Text(
+                          'All',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.orange,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Chip(
+                        label: Text(
+                          'Action',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.orange,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Chip(
+                        label: Text(
+                          'Adventure',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.orange,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Chip(
+                        label: Text(
+                          'Comedy',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.orange,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Chip(
+                        label: Text(
+                          'Dramma',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.orange,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Chip(
+                        label: Text(
+                          'Detective',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.orange,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Chip(
+                        label: Text(
+                          'Fantastic',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.orange,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 12.0,
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 12.0),
+                    child: Text(
+                      'Top Trends',
+                      style: TextStyle(
+                          fontSize: 26,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 12.0,
+              ),
+              Container(
+                height: 230,
+                width: double.infinity,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5.0),
+                      child: MovieCard(
+                          'Avengers', '8.0/10', "assets/one.jpg"),
+                    ),
+                     Padding(padding: EdgeInsets.symmetric(horizontal: 5.0),
+                       child: MovieCard(
+                          'Terminator', '7.0/10', 'assets/two.jpg'),),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 5.0),
+                        child: MovieCard(
+                            'Avengers', '3.0/10', 'assets/three.jpg'),)
+
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 25.0,
+              ),
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: Text(
+                      "Recommendation for you",
+                      style: TextStyle(
+                          color: Colors.orange,
+                          fontSize: 26.0,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 12.0,
+              ),
+              Container(
+                height: 230,
+                width: double.infinity,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5.0),
+                      child: MovieCard(
+                          'Avengers', '8.0/10', "assets/four.jpg"),
+                    ),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 5.0),
+                      child: MovieCard(
+                          'Terminator', '7.0/10', 'assets/five.jpg'),),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 5.0),
+                        child: MovieCard(
+                            'Avengers', '3.0/10', 'assets/six.jpg'),)
+
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 50.0,
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+Widget MovieCard(String title, String Rate, String imgPath) {
+  return InkWell(
+    onTap: () {},
+    child: Column(
+      children: [
+        Card(
+          elevation: 0.0,
+          child: Image.asset(
+            imgPath,
+            fit: BoxFit.fill,
+            width: 130,
+            height: 160,
+          ),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          title,
+          style: TextStyle(
+              color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          Rate,
+          style: TextStyle(
+              color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+      ],
+    ),
+  );
 }
 
 class CreditCard extends StatelessWidget {
@@ -178,8 +417,13 @@ class CreditCard extends StatelessWidget {
                             shape: StadiumBorder(),
                             color: Colors.pinkAccent,
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 80.0,vertical: 18.0),
-                              child: Text('Pay',style: TextStyle(fontSize: 18,color: Colors.white),),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 80.0, vertical: 18.0),
+                              child: Text(
+                                'Pay',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                              ),
                             ))
                       ],
                     ),
