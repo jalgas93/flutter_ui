@@ -1,12 +1,143 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finance_app_ui/widgets/food_card.dart';
 import 'package:flutter_finance_app_ui/widgets/travel_card.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Travel(),
+    home: FoodDelivery(),
   ));
+}
+
+class FoodDelivery extends StatefulWidget {
+  const FoodDelivery({Key? key}) : super(key: key);
+
+  @override
+  _FoodDeliveryState createState() => _FoodDeliveryState();
+}
+
+class _FoodDeliveryState extends State<FoodDelivery> {
+  List<String> imgUrl = [
+    "https://purepng.com/public/uploads/large/purepng.com-food-platefood-meat-plate-tasty-grill-breakfast-dinner-french-fries-launch-941524624270veqpm.png",
+    "https://toreys.net/wp-content/uploads/2019/06/steak-fries-400x209-reduced.png",
+    "https://pngimage.net/wp-content/uploads/2018/06/sizzler-png-4.png",
+    "https://pngimage.net/wp-content/uploads/2018/06/sizzler-png-3.png",
+    "https://pngimage.net/wp-content/uploads/2018/06/sizzler-png-2.png",
+    "https://pngimage.net/wp-content/uploads/2018/06/sizzler-png-8.png",
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFFFCFCFC),
+      appBar: AppBar(
+        backgroundColor: Color(0xFFfcfcfc),
+        title: Text(
+          'Food Deliver App',
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.black54,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.menu, color: Colors.black87),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.black87,
+              ))
+        ],
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Let's eat \nOrder your Food Now",
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              height: 50.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Color(0x55d2d2d2),
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    decoration: InputDecoration(
+                        hintText: "Search...",
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(left: 15.0)),
+                  )),
+                  RaisedButton(
+                    onPressed: () {},
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    ),
+                    color: Color(0xFFfc6a26),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Expanded(
+                child: GridView.count(
+              crossAxisCount: 2,
+              childAspectRatio: 0.7,
+              children: [
+                FoodCard(imgUrl[0], 'Food Meat', '3400'),
+                FoodCard(imgUrl[1], 'Food Meat', '2200'),
+                FoodCard(imgUrl[2], 'Food Meat', '6500'),
+                FoodCard(imgUrl[3], 'Food Meat', '2500'),
+                FoodCard(imgUrl[4], 'Food Meat', '4200'),
+                FoodCard(imgUrl[5], 'Food Meat', '4200'),
+              ],
+            ))
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Color(0xFFfc6a26),
+        backgroundColor: Color(0xFFfcfcfc),
+        // selectedLabelStyle: TextStyle(color: Colors.pinkAccent),
+        elevation: 0.0,
+
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Favorite'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perofil'),
+        ],
+      ),
+    );
+  }
 }
 
 class Travel extends StatefulWidget {
@@ -168,23 +299,14 @@ class _TravelState extends State<Travel> {
         unselectedItemColor: Color(0xFFB7B7B7),
         selectedItemColor: Color(0xFFFE8C68),
         items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-           label: 'Home'
-          ),
+              icon: Icon(Icons.bookmark), label: 'BookMark'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
-              label: 'BookMark'
-
-          ),
+              icon: Icon(Icons.notifications), label: 'Destination'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-              label: 'Destination'
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.location_on),
-              label: 'Notification',
-
+            icon: Icon(Icons.location_on),
+            label: 'Notification',
           ),
         ],
       ),
@@ -392,7 +514,6 @@ class _MovieAppState extends State<MovieApp> {
           ],
         ),
       ),
-
     );
   }
 }
